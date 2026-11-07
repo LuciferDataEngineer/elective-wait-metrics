@@ -5,7 +5,9 @@
 
 Australian public hospitals, elective surgery, 2011–12 to 2024–25. The question this project answers is which states, peer groups, urgency categories, and hospitals are missing the recommended wait, and where attention should go first.
 
-**Live page (after merge):** [luciferdataengineer.github.io/elective-wait-metrics](https://luciferdataengineer.github.io/elective-wait-metrics/)
+**Dashboard:** [luciferdataengineer.github.io/elective-wait-metrics](https://luciferdataengineer.github.io/elective-wait-metrics/)
+
+**Data Docs:** [luciferdataengineer.github.io/elective-wait-metrics/data-docs/](https://luciferdataengineer.github.io/elective-wait-metrics/data-docs/)
 
 The page is for a health-system reader. It has five tabs (Overview, States, Hospitals, Urgency, What to do), large figures, and short explanations. The notes for a technical reader are this file and [INSIGHTS.md](INSIGHTS.md).
 
@@ -183,7 +185,12 @@ GitHub Actions workflow `ci` runs `make all` on pull requests and on `main`. Tha
 - `mf validate-configs` against DuckDB
 - the Great Expectations checkpoint
 
-Workflow `pages` rebuilds the site on `main` and deploys it with `actions/deploy-pages`. The stakeholder page and the data docs are one Pages site. Enable Pages with **GitHub Actions** as the source if the repository settings do not already say that. The workflow itself requests `pages: write` and `id-token: write`.
+Workflow `pages` rebuilds the site on every push to `main` and deploys the `site/` directory with `actions/upload-pages-artifact` and `actions/deploy-pages`. The five-tab dashboard and the Great Expectations Data Docs are that one site:
+
+- Dashboard: https://luciferdataengineer.github.io/elective-wait-metrics/
+- Data Docs: https://luciferdataengineer.github.io/elective-wait-metrics/data-docs/
+
+The first deploy has a prerequisite the workflow cannot create for itself. In the repository settings, Pages must already be turned on with **GitHub Actions** as the source before `deploy-pages` runs. A green build followed by `Creating Pages deployment failed` (HTTP 404, “Ensure GitHub Pages has been enabled”) means that setting was still off. It does not mean `.github/workflows/pages.yml` is wrong. The file already requests `contents: read`, `pages: write`, and `id-token: write`, uploads `site/`, and deploys into the `github-pages` environment. Turning Pages on does not rerun the failed job. The next push to `main` starts a new deploy. A merged pull request is enough. The two URLs above answer only after that run succeeds.
 
 ## Limitations and next steps
 
