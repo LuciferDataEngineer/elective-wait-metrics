@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: metricflow_time_spine
+    description: Daily calendar used by the semantic layer. Financial years are carried on the facts; this spine supplies the day grain.
+    time_spine:
+      standard_granularity_column: date_day
+    columns:
+      - name: date_day
+        description: Calendar date.
+        granularity: day
+        tests:
+          - unique
+          - not_null

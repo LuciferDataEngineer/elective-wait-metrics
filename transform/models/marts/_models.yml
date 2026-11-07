@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: fct_hospital_urgency
+    description: >
+      Public hospital elective admissions by urgency and financial year.
+      Local hospital networks are excluded so they are not added on top of their hospitals.
+    columns:
+      - name: slice_key
+        tests: [unique, not_null]
+      - name: hospital_name
+        tests: [not_null]
+      - name: state_code
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA"]
+      - name: financial_year
+        tests: [not_null]
+      - name: urgency_label
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["Urgent", "Semi-urgent", "Non-urgent"]
+      - name: admissions
+        tests:
+          - not_null
+      - name: report_date
+        tests: [not_null]
+      - name: recommended_days
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [30, 90, 365]
+
+  - name: fct_specialty_report
+    description: >
+      State and national elective surgery figures by surgical specialty.
+      These rows are the published reporting units, not a sum of hospitals.
+    columns:
+      - name: slice_key
+        tests: [unique, not_null]
+      - name: reporting_level
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["State", "National"]
+      - name: state_code
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["ACT", "NSW", "NT", "Qld", "SA", "Tas", "Vic", "WA", "AUS"]
+      - name: financial_year
+        tests: [not_null]
+      - name: surgical_specialty
+        tests: [not_null]
+      - name: admissions
+        tests: [not_null]
+      - name: report_date
+        tests: [not_null]
+
+  - name: fct_procedure_report
+    description: >
+      State and national elective surgery figures by intended procedure.
+      Procedures overlap, so this fact is not rolled into a national admission total.
+    columns:
+      - name: slice_key
+        tests: [unique, not_null]
+      - name: reporting_level
+        tests:
+          - accepted_values:
+              arguments:
+                values: ["State", "National"]
+      - name: intended_procedure
+        tests: [not_null]
+      - name: admissions
+        tests: [not_null]
+      - name: financial_year
+        tests: [not_null]
+      - name: report_date
+        tests: [not_null]

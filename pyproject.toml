@@ -1,0 +1,18 @@
+[project]
+name = "elective-wait-metrics"
+version = "1.0.0"
+description = "Australian public hospital elective surgery waiting times, with a dbt MetricFlow semantic layer."
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]

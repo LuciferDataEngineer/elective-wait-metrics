@@ -1,0 +1,921 @@
+{
+  "generated_at": "2026-11-08T09:27:27+11:00",
+  "timezone": "Australia/Melbourne",
+  "latest_year": "2024–25",
+  "previous_year": "2023–24",
+  "banner": {
+    "kicker": "Public hospitals · Australia",
+    "title": "Elective surgery waits",
+    "dek": "Half of patients were admitted within 45 days. About 1 in 17 waited more than a year. Urgent surgery in Tasmania is the first place to look: 65.7% were done within 30 days."
+  },
+  "kpis": [
+    {
+      "value": "45 days",
+      "label": "Half of patients were admitted within this time",
+      "detail": "Australia, 2024–25. Down from 46 days the year before.",
+      "status": "watch"
+    },
+    {
+      "value": "6%",
+      "label": "Waited more than a year",
+      "detail": "Down from 6.4% the year before. The hospital specialty tables come out at 5.9%.",
+      "status": "watch"
+    },
+    {
+      "value": "65.7%",
+      "label": "Of urgent surgery in Tasmania was done within 30 days",
+      "detail": "The lowest of the states. Victoria's published hospital figures are at 100%.",
+      "status": "poor"
+    },
+    {
+      "value": "51.7%",
+      "label": "Of semi-urgent surgery in the ACT was done within 90 days",
+      "detail": "Only about half. Tasmania is next, at 52.5%.",
+      "status": "poor"
+    },
+    {
+      "value": "791,000",
+      "label": "People admitted from public waiting lists",
+      "detail": "The specialty tables cover 790,528 operations in 2024–25.",
+      "status": "neutral"
+    }
+  ],
+  "hero": {
+    "title": "The ACT and New South Wales have the most people waiting longer than a year",
+    "insight": "Share of operations in 2024–25. Queensland is the lowest.",
+    "rows": [
+      {
+        "label": "Australian Capital Territory",
+        "short": "ACT",
+        "value": 9.4,
+        "admissions": 16565
+      },
+      {
+        "label": "New South Wales",
+        "short": "NSW",
+        "value": 9.2,
+        "admissions": 232849
+      },
+      {
+        "label": "Northern Territory",
+        "short": "NT",
+        "value": 8.3,
+        "admissions": 6406
+      },
+      {
+        "label": "South Australia",
+        "short": "SA",
+        "value": 6.0,
+        "admissions": 61419
+      },
+      {
+        "label": "Western Australia",
+        "short": "WA",
+        "value": 5.3,
+        "admissions": 89614
+      },
+      {
+        "label": "Tasmania",
+        "short": "Tas",
+        "value": 5.0,
+        "admissions": 22519
+      },
+      {
+        "label": "Victoria",
+        "short": "Vic",
+        "value": 4.2,
+        "admissions": 211961
+      },
+      {
+        "label": "Queensland",
+        "short": "Qld",
+        "value": 3.4,
+        "admissions": 149195
+      }
+    ]
+  },
+  "overview": {
+    "trend": {
+      "title": "Long waits jumped in 2020 and have only partly come back down",
+      "insight": "Share waiting more than a year. The latest hospital-table figure is 5.9%.",
+      "rows": [
+        {
+          "label": "2011–12",
+          "value": 2.7
+        },
+        {
+          "label": "2012–13",
+          "value": 2.8
+        },
+        {
+          "label": "2013–14",
+          "value": 2.4
+        },
+        {
+          "label": "2014–15",
+          "value": 1.8
+        },
+        {
+          "label": "2015–16",
+          "value": 2.0
+        },
+        {
+          "label": "2016–17",
+          "value": 1.7
+        },
+        {
+          "label": "2017–18",
+          "value": 1.8
+        },
+        {
+          "label": "2018–19",
+          "value": 2.1
+        },
+        {
+          "label": "2019–20",
+          "value": 2.8
+        },
+        {
+          "label": "2020–21",
+          "value": 7.6
+        },
+        {
+          "label": "2021–22",
+          "value": 6.3
+        },
+        {
+          "label": "2022–23",
+          "value": 9.6
+        },
+        {
+          "label": "2023–24",
+          "value": 6.4
+        },
+        {
+          "label": "2024–25",
+          "value": 5.9
+        }
+      ]
+    },
+    "urgency": {
+      "title": "The 90-day surgeries are where most people miss the recommended time",
+      "insight": "Share treated within 30, 90, or 365 days, 2024–25.",
+      "rows": [
+        {
+          "label": "Urgent",
+          "on_time": 90.7,
+          "outside": 23647,
+          "admissions": 255128,
+          "within_days": 30,
+          "past_typical": 3
+        },
+        {
+          "label": "Semi-urgent",
+          "on_time": 72.0,
+          "outside": 86150,
+          "admissions": 307912,
+          "within_days": 90,
+          "past_typical": 16
+        },
+        {
+          "label": "Non-urgent",
+          "on_time": 81.2,
+          "outside": 42435,
+          "admissions": 225711,
+          "within_days": 365,
+          "past_typical": 10
+        }
+      ]
+    }
+  },
+  "states": {
+    "on_time": {
+      "title": "Tasmania is last on urgent surgery, even where other states are close to the mark",
+      "insight": "Share of hospital operations treated within the recommended time, 2024–25.",
+      "categories": [
+        "Urgent",
+        "Semi-urgent",
+        "Non-urgent"
+      ],
+      "rows": [
+        {
+          "label": "Tasmania",
+          "short": "Tas",
+          "values": [
+            65.7,
+            52.5,
+            85.0
+          ]
+        },
+        {
+          "label": "Northern Territory",
+          "short": "NT",
+          "values": [
+            74.8,
+            59.7,
+            71.6
+          ]
+        },
+        {
+          "label": "Australian Capital Territory",
+          "short": "ACT",
+          "values": [
+            75.5,
+            51.7,
+            69.0
+          ]
+        },
+        {
+          "label": "South Australia",
+          "short": "SA",
+          "values": [
+            80.4,
+            59.0,
+            80.1
+          ]
+        },
+        {
+          "label": "Western Australia",
+          "short": "WA",
+          "values": [
+            82.8,
+            71.0,
+            85.4
+          ]
+        },
+        {
+          "label": "Queensland",
+          "short": "Qld",
+          "values": [
+            86.1,
+            74.4,
+            83.4
+          ]
+        },
+        {
+          "label": "New South Wales",
+          "short": "NSW",
+          "values": [
+            99.0,
+            79.3,
+            76.6
+          ]
+        },
+        {
+          "label": "Victoria",
+          "short": "Vic",
+          "values": [
+            100.0,
+            70.3,
+            87.1
+          ]
+        }
+      ]
+    },
+    "change": {
+      "title": "Victoria improved the most since last year. New South Wales went the other way",
+      "insight": "Change, in percentage points, in the share waiting more than a year.",
+      "rows": [
+        {
+          "label": "New South Wales",
+          "short": "NSW",
+          "value": 1.3
+        },
+        {
+          "label": "South Australia",
+          "short": "SA",
+          "value": 0.9
+        },
+        {
+          "label": "Australian Capital Territory",
+          "short": "ACT",
+          "value": 0.5
+        },
+        {
+          "label": "Northern Territory",
+          "short": "NT",
+          "value": -0.2
+        },
+        {
+          "label": "Queensland",
+          "short": "Qld",
+          "value": -0.4
+        },
+        {
+          "label": "Western Australia",
+          "short": "WA",
+          "value": -0.5
+        },
+        {
+          "label": "Tasmania",
+          "short": "Tas",
+          "value": -1.3
+        },
+        {
+          "label": "Victoria",
+          "short": "Vic",
+          "value": -2.7
+        }
+      ]
+    },
+    "volume": {
+      "title": "New South Wales and Victoria do most of the surgery",
+      "insight": "Operations in the 2024–25 state specialty tables.",
+      "rows": [
+        {
+          "label": "New South Wales",
+          "short": "NSW",
+          "value": 232849
+        },
+        {
+          "label": "Victoria",
+          "short": "Vic",
+          "value": 211961
+        },
+        {
+          "label": "Queensland",
+          "short": "Qld",
+          "value": 149195
+        },
+        {
+          "label": "Western Australia",
+          "short": "WA",
+          "value": 89614
+        },
+        {
+          "label": "South Australia",
+          "short": "SA",
+          "value": 61419
+        },
+        {
+          "label": "Tasmania",
+          "short": "Tas",
+          "value": 22519
+        },
+        {
+          "label": "Australian Capital Territory",
+          "short": "ACT",
+          "value": 16565
+        },
+        {
+          "label": "Northern Territory",
+          "short": "NT",
+          "value": 6406
+        }
+      ]
+    }
+  },
+  "hospitals": {
+    "priority": {
+      "title": "These hospitals account for the most people treated outside the recommended time",
+      "insight": "Rebuilt from the published share and the number of operations. 2024–25.",
+      "rows": [
+        {
+          "label": "Sydney Hospital / Sydney Eye Hospital · Non-urgent",
+          "hospital": "Sydney Hospital / Sydney Eye Hospital",
+          "state": "NSW",
+          "urgency": "Non-urgent",
+          "value": 2365,
+          "on_time": 35.0,
+          "within_days": 378
+        },
+        {
+          "label": "Royal Adelaide Hospital · Urgent",
+          "hospital": "Royal Adelaide Hospital",
+          "state": "SA",
+          "urgency": "Urgent",
+          "value": 2218,
+          "on_time": 60.0,
+          "within_days": 26
+        },
+        {
+          "label": "Royal Adelaide Hospital · Semi-urgent",
+          "hospital": "Royal Adelaide Hospital",
+          "state": "SA",
+          "urgency": "Semi-urgent",
+          "value": 2084,
+          "on_time": 41.0,
+          "within_days": 107
+        },
+        {
+          "label": "Royal Children's Hospital [Parkville] · Semi-urgent",
+          "hospital": "Royal Children's Hospital [Parkville]",
+          "state": "Vic",
+          "urgency": "Semi-urgent",
+          "value": 2026,
+          "on_time": 46.0,
+          "within_days": 102
+        },
+        {
+          "label": "Royal Brisbane & Women's Hospital · Semi-urgent",
+          "hospital": "Royal Brisbane & Women's Hospital",
+          "state": "Qld",
+          "urgency": "Semi-urgent",
+          "value": 2022,
+          "on_time": 48.0,
+          "within_days": 92
+        },
+        {
+          "label": "The Canberra Hospital · Semi-urgent",
+          "hospital": "The Canberra Hospital",
+          "state": "ACT",
+          "urgency": "Semi-urgent",
+          "value": 1814,
+          "on_time": 39.0,
+          "within_days": 114
+        },
+        {
+          "label": "Westmead Hospital · Semi-urgent",
+          "hospital": "Westmead Hospital",
+          "state": "NSW",
+          "urgency": "Semi-urgent",
+          "value": 1785,
+          "on_time": 64.0,
+          "within_days": 69
+        },
+        {
+          "label": "Sydney Hospital / Sydney Eye Hospital · Semi-urgent",
+          "hospital": "Sydney Hospital / Sydney Eye Hospital",
+          "state": "NSW",
+          "urgency": "Semi-urgent",
+          "value": 1715,
+          "on_time": 46.0,
+          "within_days": 94
+        }
+      ]
+    },
+    "peers": {
+      "title": "Children’s hospitals and large regional hospitals are furthest from the recommended time",
+      "insight": "Share treated on time, all urgencies, 2024–25.",
+      "rows": [
+        {
+          "label": "Children's hospitals",
+          "value": 77.6,
+          "admissions": 36239
+        },
+        {
+          "label": "Large regional hospitals",
+          "value": 77.9,
+          "admissions": 98291
+        },
+        {
+          "label": "Major hospitals",
+          "value": 79.1,
+          "admissions": 256099
+        },
+        {
+          "label": "Large metropolitan hospitals",
+          "value": 80.1,
+          "admissions": 162255
+        },
+        {
+          "label": "Medium metropolitan hospitals",
+          "value": 81.3,
+          "admissions": 90754
+        },
+        {
+          "label": "Medium regional hospitals",
+          "value": 84.8,
+          "admissions": 42361
+        },
+        {
+          "label": "Small hospitals",
+          "value": 86.1,
+          "admissions": 71321
+        },
+        {
+          "label": "Unpeered",
+          "value": 89.1,
+          "admissions": 31431
+        }
+      ]
+    },
+    "breaches": {
+      "title": "In a handful of hospitals, the typical wait is already past the recommended limit",
+      "insight": "Hospitals where half of patients waited longer than 30, 90, or 365 days.",
+      "rows": [
+        {
+          "label": "Urgent",
+          "value": 3,
+          "within_days": 30
+        },
+        {
+          "label": "Semi-urgent",
+          "value": 16,
+          "within_days": 90
+        },
+        {
+          "label": "Non-urgent",
+          "value": 10,
+          "within_days": 365
+        }
+      ]
+    }
+  },
+  "urgency_tab": {
+    "trend": {
+      "title": "Urgent surgery is still mostly on time, but less so than before the pandemic",
+      "insight": "Share treated within the recommended time, public hospitals.",
+      "categories": [
+        "Urgent",
+        "Semi-urgent",
+        "Non-urgent"
+      ],
+      "rows": [
+        {
+          "label": "2011–12",
+          "values": [
+            91.7,
+            80.3,
+            92.5
+          ]
+        },
+        {
+          "label": "2012–13",
+          "values": [
+            94.8,
+            80.2,
+            92.8
+          ]
+        },
+        {
+          "label": "2013–14",
+          "values": [
+            97.0,
+            82.8,
+            94.3
+          ]
+        },
+        {
+          "label": "2014–15",
+          "values": [
+            97.4,
+            86.9,
+            95.7
+          ]
+        },
+        {
+          "label": "2015–16",
+          "values": [
+            96.9,
+            87.2,
+            95.2
+          ]
+        },
+        {
+          "label": "2016–17",
+          "values": [
+            96.4,
+            88.7,
+            95.7
+          ]
+        },
+        {
+          "label": "2017–18",
+          "values": [
+            95.6,
+            88.0,
+            95.1
+          ]
+        },
+        {
+          "label": "2018–19",
+          "values": [
+            95.7,
+            87.4,
+            94.2
+          ]
+        },
+        {
+          "label": "2019–20",
+          "values": [
+            95.7,
+            83.0,
+            91.4
+          ]
+        },
+        {
+          "label": "2020–21",
+          "values": [
+            94.5,
+            75.6,
+            77.9
+          ]
+        },
+        {
+          "label": "2021–22",
+          "values": [
+            93.8,
+            68.7,
+            78.6
+          ]
+        },
+        {
+          "label": "2022–23",
+          "values": [
+            91.5,
+            65.2,
+            72.0
+          ]
+        },
+        {
+          "label": "2023–24",
+          "values": [
+            91.4,
+            70.9,
+            81.4
+          ]
+        },
+        {
+          "label": "2024–25",
+          "values": [
+            90.7,
+            72.0,
+            81.2
+          ]
+        }
+      ]
+    },
+    "specialties": {
+      "title": "Ear, nose and throat, eyes, and orthopaedics have the longest typical waits",
+      "insight": "Days by which half of national patients in that specialty were admitted, 2024–25.",
+      "rows": [
+        {
+          "label": "Ear, nose and throat surgery",
+          "value": 99,
+          "admissions": 60031,
+          "over_year": 14.4
+        },
+        {
+          "label": "Ophthalmology",
+          "value": 92,
+          "admissions": 117596,
+          "over_year": 10.6
+        },
+        {
+          "label": "Orthopaedic surgery",
+          "value": 86,
+          "admissions": 103750,
+          "over_year": 10.8
+        },
+        {
+          "label": "Paediatric surgery",
+          "value": 46,
+          "admissions": 10504,
+          "over_year": 5.0
+        },
+        {
+          "label": "Neurosurgery",
+          "value": 37,
+          "admissions": 12867,
+          "over_year": 3.8
+        },
+        {
+          "label": "Gynaecology",
+          "value": 37,
+          "admissions": 94148,
+          "over_year": 3.0
+        },
+        {
+          "label": "General surgery",
+          "value": 35,
+          "admissions": 155126,
+          "over_year": 2.8
+        },
+        {
+          "label": "Urology",
+          "value": 28,
+          "admissions": 116931,
+          "over_year": 1.8
+        },
+        {
+          "label": "Plastic surgery",
+          "value": 26,
+          "admissions": 67252,
+          "over_year": 4.8
+        },
+        {
+          "label": "Vascular surgery",
+          "value": 25,
+          "admissions": 18750,
+          "over_year": 2.4
+        },
+        {
+          "label": "Other surgery",
+          "value": 24,
+          "admissions": 21551,
+          "over_year": 2.6
+        },
+        {
+          "label": "Cardio-thoracic surgery",
+          "value": 20,
+          "admissions": 12022,
+          "over_year": 0.7
+        }
+      ]
+    },
+    "procedures": {
+      "title": "Septoplasty and knee replacement leave people waiting the longest",
+      "insight": "Common operations with at least 4,000 admissions. Days by which half of patients were admitted.",
+      "rows": [
+        {
+          "label": "Septoplasty",
+          "value": 320,
+          "admissions": 5687,
+          "over_year": 30.8
+        },
+        {
+          "label": "Total knee replacement",
+          "value": 255,
+          "admissions": 17987,
+          "over_year": 23.2
+        },
+        {
+          "label": "Tonsillectomy",
+          "value": 182,
+          "admissions": 16182,
+          "over_year": 17.0
+        },
+        {
+          "label": "Total hip replacement",
+          "value": 130,
+          "admissions": 12180,
+          "over_year": 13.0
+        },
+        {
+          "label": "Cataract extraction",
+          "value": 106,
+          "admissions": 87841,
+          "over_year": 11.5
+        },
+        {
+          "label": "Herniorrhaphy",
+          "value": 86,
+          "admissions": 12195,
+          "over_year": 6.9
+        },
+        {
+          "label": "Anterior cruciate ligament reconstruction",
+          "value": 81,
+          "admissions": 4122,
+          "over_year": 5.7
+        },
+        {
+          "label": "Myringotomy",
+          "value": 80,
+          "admissions": 5479,
+          "over_year": 5.6
+        }
+      ]
+    }
+  },
+  "actions": {
+    "urgent": {
+      "title": "Urgent surgery within 30 days, by state",
+      "insight": "Lowest shares need attention first. 2024–25.",
+      "rows": [
+        {
+          "label": "Tasmania",
+          "short": "Tas",
+          "value": 65.7
+        },
+        {
+          "label": "Northern Territory",
+          "short": "NT",
+          "value": 74.8
+        },
+        {
+          "label": "Australian Capital Territory",
+          "short": "ACT",
+          "value": 75.5
+        },
+        {
+          "label": "South Australia",
+          "short": "SA",
+          "value": 80.4
+        },
+        {
+          "label": "Western Australia",
+          "short": "WA",
+          "value": 82.8
+        },
+        {
+          "label": "Queensland",
+          "short": "Qld",
+          "value": 86.1
+        },
+        {
+          "label": "New South Wales",
+          "short": "NSW",
+          "value": 99.0
+        },
+        {
+          "label": "Victoria",
+          "short": "Vic",
+          "value": 100.0
+        }
+      ]
+    },
+    "semi": {
+      "title": "Semi-urgent surgery within 90 days, by state",
+      "insight": "This is where the count of missed waits is largest.",
+      "rows": [
+        {
+          "label": "Australian Capital Territory",
+          "short": "ACT",
+          "value": 51.7
+        },
+        {
+          "label": "Tasmania",
+          "short": "Tas",
+          "value": 52.5
+        },
+        {
+          "label": "South Australia",
+          "short": "SA",
+          "value": 59.0
+        },
+        {
+          "label": "Northern Territory",
+          "short": "NT",
+          "value": 59.7
+        },
+        {
+          "label": "Victoria",
+          "short": "Vic",
+          "value": 70.3
+        },
+        {
+          "label": "Western Australia",
+          "short": "WA",
+          "value": 71.0
+        },
+        {
+          "label": "Queensland",
+          "short": "Qld",
+          "value": 74.4
+        },
+        {
+          "label": "New South Wales",
+          "short": "NSW",
+          "value": 79.3
+        }
+      ]
+    },
+    "cards": [
+      {
+        "status": "poor",
+        "title": "Start with urgent surgery in Tasmania",
+        "body": "Only 65.7% of urgent operations in Tasmanian public hospitals were done within 30 days. The Northern Territory is at 74.8% and the ACT at 75.5%. New South Wales is at 99.0% and Victoria at 100%."
+      },
+      {
+        "status": "poor",
+        "title": "Then the 90-day surgeries in the ACT, Tasmania, South Australia, and the NT",
+        "body": "Nationally, 72.0% of semi-urgent operations were done within 90 days. The ACT is at 51.7% and Tasmania at 52.5%. Canberra Hospital's typical semi-urgent wait is already past 90 days, with a large number of people affected."
+      },
+      {
+        "status": "watch",
+        "title": "Treat waits over a year as an ACT and New South Wales problem, not a flat national one",
+        "body": "Australian Capital Territory is at 9.4% and New South Wales at 9.2%. Queensland is lowest, at 3.4%. NSW eye surgery and ACT ear, nose and throat surgery (38.3% waited more than a year) sit inside those state results."
+      },
+      {
+        "status": "watch",
+        "title": "Do not stop at the typical wait",
+        "body": "A hospital can admit the typical urgent patient inside 30 days and still miss hundreds or thousands of people. Royal Adelaide's urgent list is the clearest example: typical wait 26 days, only 60.0% inside the limit."
+      }
+    ]
+  },
+  "means": {
+    "overview": "These figures are about people who have already had their operation, not people still waiting. The 45-day national figure counts every patient once. The state bars use each state total for waits longer than a year. Nine in ten patients nationally were admitted within 329 days.",
+    "states": "A state can look reasonable overall and still miss the urgent clock. New South Wales does well on urgent surgery and poorly on waits over a year, driven by eye surgery: half of those patients waited longer than 224 days, and 20.7% waited more than a year (39,389 operations).",
+    "hospitals": "Sydney Hospital / Sydney Eye Hospital has the largest single gap on this list: about 2,365 non-urgent patients were treated outside the recommended time. At Royal Adelaide Hospital the typical urgent patient was admitted within 26 days, inside the 30-day mark, but only 60.0% were. That is about 2,218 people.",
+    "urgency": "Semi-urgent surgery is the bulk of the missed clock: 72.0% were done within 90 days, about 86,150 people were not. Ear, nose and throat, eye surgery, and orthopaedics have the longest typical waits. Knee replacement, septoplasty, tonsils, hip replacement, and cataract surgery are the high-volume operations to watch.",
+    "actions": "Look first at urgent surgery where the 30-day mark is missed, then at semi-urgent services that miss the 90-day mark for a large number of people, then at the states and operations where more than a year is becoming common. Small hospitals with a handful of operations can post a very long typical wait; the list above weighs that by how many people are affected."
+  },
+  "sources": [
+    {
+      "name": "Hospital, specialty, and procedure tables",
+      "detail": "Australian Institute of Health and Welfare, MyHospitals elective surgery indicators, redistributed by National Digital on publicdata.au under CC BY 4.0. Urgency file version 2026-10-03. Procedure and specialty files version 2026-10-20. Accessed 8 November 2026."
+    },
+    {
+      "name": "National 45-day and 6% figures",
+      "detail": "Australian Institute of Health and Welfare, Elective surgery waiting times 2024–25. https://www.aihw.gov.au/hospitals/topics/elective-surgery . Accessed 8 November 2026. These count each patient once and are not rebuilt by averaging hospital figures."
+    }
+  ],
+  "audit": {
+    "specialty_admissions_2024_25": 790528,
+    "share_waited_over_year": 0.059358,
+    "share_waited_over_year_pct": 5.9,
+    "previous_share_waited_over_year_pct": 6.4,
+    "specialty_weighted_average_of_published_waits_days": 52.9,
+    "note": "The weighted average of specialty waits is not the national 45-day figure. The page does not present it as one.",
+    "tas_urgent_on_time_pct": 65.7,
+    "vic_urgent_on_time_pct": 100.0,
+    "act_semi_on_time_pct": 51.7,
+    "listings_past_recommended_wait": {
+      "Urgent": 3,
+      "Semi-urgent": 16,
+      "Non-urgent": 10
+    }
+  }
+}

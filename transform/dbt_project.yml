@@ -1,0 +1,18 @@
+name: elective_wait
+version: "1.0.0"
+config-version: 2
+profile: elective_wait
+
+model-paths: ["models"]
+test-paths: ["tests"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages", "logs"]
+
+models:
+  elective_wait:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+    semantic:
+      +materialized: table
