@@ -1,0 +1,47 @@
+{
+  "project": "elective-wait-metrics",
+  "access_date": "2026-11-08",
+  "access_timezone": "Australia/Melbourne",
+  "note": "Pinned publicdata.au parquet snapshots of AIHW MyHospitals elective surgery indicators. CI rebuilds from these files and does not need the network.",
+  "files": [
+    {
+      "path": "data/snapshot/elective_surgery_waiting_times.parquet",
+      "title": "Elective surgery waiting times by hospital and urgency category",
+      "sha256": "ac8b7dfa068b6a71d342b168c5c5408b119370d0d0e0d43085adda6952362c23",
+      "rows": 12159,
+      "bytes": 70515,
+      "source_url": "https://publicdata.au/d/au-elective-surgery-waiting-times/v/2026-10-03/data.parquet",
+      "publisher": "Australian Institute of Health and Welfare",
+      "redistributor": "National Digital (publicdata.au)",
+      "licence": "CC BY 4.0",
+      "coverage": "2011\u201312 to 2024\u201325",
+      "version_pinned": true
+    },
+    {
+      "path": "data/snapshot/elective_surgery_by_procedure.parquet",
+      "title": "Elective surgery waiting times by hospital and intended procedure",
+      "sha256": "45019b324496c56a2141c83a25ebf1611a5531788be7107ae773895d47fa9495",
+      "rows": 183929,
+      "bytes": 977203,
+      "source_url": "https://publicdata.au/d/au-elective-surgery-waiting-times-by-procedure/v/2026-10-20/data.parquet",
+      "publisher": "Australian Institute of Health and Welfare",
+      "redistributor": "National Digital (publicdata.au)",
+      "licence": "CC BY 4.0",
+      "coverage": "2011\u201312 to 2024\u201325",
+      "version_pinned": true
+    },
+    {
+      "path": "data/snapshot/elective_surgery_by_specialty.parquet",
+      "title": "Elective surgery waiting times by hospital and surgical specialty",
+      "sha256": "de1c6bdcc27d350e339c2282aab5185478a26ad2900d95b5e1aeeb4206c663e7",
+      "rows": 27902,
+      "bytes": 155499,
+      "source_url": "https://publicdata.au/d/au-elective-surgery-waiting-times-by-specialty/v/2026-10-20/data.parquet",
+      "publisher": "Australian Institute of Health and Welfare",
+      "redistributor": "National Digital (publicdata.au)",
+      "licence": "CC BY 4.0",
+      "coverage": "2011\u201312 to 2024\u201325",
+      "version_pinned": true
+    }
+  ]
+}

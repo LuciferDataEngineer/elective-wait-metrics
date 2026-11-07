@@ -1,0 +1,15 @@
+{
+  "source_title": "Elective surgery waiting times, Australian Institute of Health and Welfare",
+  "source_url": "https://www.aihw.gov.au/hospitals/topics/elective-surgery",
+  "overview_url": "https://www.aihw.gov.au/hospitals/topics/elective-surgery/waiting-times",
+  "access_date": "2026-11-08",
+  "financial_year": "2024-25",
+  "admissions": 791000,
+  "half_admitted_within_days": 45,
+  "half_admitted_within_days_previous": 46,
+  "waited_over_year_pct": 6.0,
+  "waited_over_year_pct_previous": 6.4,
+  "waited_over_year_pct_2020_21": 7.6,
+  "nine_in_ten_admitted_within_days": 329,
+  "note": "Patient-level national figures published by the AIHW. They are cited for context and are not recomputed by averaging hospital or specialty waits."
+}

@@ -1,0 +1,471 @@
+version: 2
+
+semantic_models:
+  - name: hospital_urgency
+    description: >
+      Hospital elective admissions by urgency. Measures are additive so shares
+      and waits can be rolled up by state, peer group, urgency, or year.
+    model: ref('fct_hospital_urgency')
+    defaults:
+      agg_time_dimension: report_date
+    entities:
+      - name: wait_record
+        type: primary
+        expr: slice_key
+      - name: hospital
+        type: foreign
+        expr: hospital_name
+      - name: state
+        type: foreign
+        expr: state_code
+      - name: urgency
+        type: foreign
+        expr: urgency_label
+      - name: report_year
+        type: foreign
+        expr: financial_year
+        description: Financial year of the admission. Named report_year because year is a reserved time grain.
+    dimensions:
+      - name: report_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: financial_year
+        type: categorical
+      - name: state_code
+        type: categorical
+      - name: state_name
+        type: categorical
+      - name: urgency_label
+        type: categorical
+      - name: peer_group
+        type: categorical
+      - name: hospital_name
+        type: categorical
+      - name: recommended_days
+        type: categorical
+    measures:
+      - name: admissions
+        description: Elective admissions with a published count.
+        agg: sum
+        expr: admissions
+      - name: admissions_with_wait
+        description: Admissions on rows that publish a wait.
+        agg: sum
+        expr: admissions_with_wait
+      - name: wait_days_times_admissions
+        description: Numerator for a surgery-weighted average of published waits.
+        agg: sum
+        expr: wait_days_times_admissions
+      - name: admissions_with_on_time_share
+        description: Admissions on rows that publish a share treated within the recommended time.
+        agg: sum
+        expr: admissions_with_on_time_share
+      - name: on_time_admissions
+        description: Admissions treated within the recommended time, rebuilt from the published share.
+        agg: sum
+        expr: on_time_admissions
+      - name: outside_recommended_admissions
+        description: >
+          Overdue risk proxy. Admissions treated outside the recommended time,
+          rebuilt from the published share. This is the volume of missed targets.
+        agg: sum
+        expr: outside_recommended_admissions
+      - name: overdue_pressure
+        description: >
+          Overdue risk proxy that also scales missed admissions by how far the
+          published wait sits past the recommended number of days. It is zero
+          when that published wait is still inside the limit.
+        agg: sum
+        expr: overdue_pressure
+      - name: listings_past_recommended_wait
+        description: Hospital-urgency rows whose published wait is already past the recommended limit.
+        agg: sum
+        expr: listings_past_recommended_wait
+      - name: published_wait_days
+        description: >
+          Published wait on the row. Valid when the query stays at the hospital-urgency grain.
+        agg: min
+        expr: published_wait_days
+
+  - name: specialty_report
+    description: State and national elective surgery by specialty.
+    model: ref('fct_specialty_report')
+    defaults:
+      agg_time_dimension: report_date
+    entities:
+      - name: specialty_record
+        type: primary
+        expr: slice_key
+      - name: state
+        type: foreign
+        expr: state_code
+      - name: report_year
+        type: foreign
+        expr: financial_year
+        description: Financial year of the admission. Named report_year because year is a reserved time grain.
+      - name: specialty
+        type: foreign
+        expr: surgical_specialty
+    dimensions:
+      - name: report_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: financial_year
+        type: categorical
+      - name: reporting_level
+        type: categorical
+      - name: state_code
+        type: categorical
+      - name: state_name
+        type: categorical
+      - name: surgical_specialty
+        type: categorical
+    measures:
+      - name: specialty_admissions
+        description: Admissions on the official specialty row.
+        agg: sum
+        expr: admissions
+      - name: specialty_admissions_with_wait
+        agg: sum
+        expr: admissions_with_wait
+      - name: specialty_wait_days_times_admissions
+        agg: sum
+        expr: wait_days_times_admissions
+      - name: specialty_admissions_with_over_year_share
+        agg: sum
+        expr: admissions_with_over_year_share
+      - name: specialty_over_year_admissions
+        description: Admissions that waited more than 365 days, rebuilt from the published share.
+        agg: sum
+        expr: over_year_admissions
+      - name: specialty_published_wait_days
+        description: Published specialty wait. Valid at the specialty reporting-unit grain.
+        agg: min
+        expr: published_wait_days
+
+  - name: procedure_report
+    description: State and national elective surgery by intended procedure.
+    model: ref('fct_procedure_report')
+    defaults:
+      agg_time_dimension: report_date
+    entities:
+      - name: procedure_record
+        type: primary
+        expr: slice_key
+      - name: state
+        type: foreign
+        expr: state_code
+      - name: report_year
+        type: foreign
+        expr: financial_year
+        description: Financial year of the admission. Named report_year because year is a reserved time grain.
+      - name: procedure
+        type: foreign
+        expr: intended_procedure
+    dimensions:
+      - name: report_date
+        type: time
+        type_params:
+          time_granularity: day
+      - name: financial_year
+        type: categorical
+      - name: reporting_level
+        type: categorical
+      - name: state_code
+        type: categorical
+      - name: state_name
+        type: categorical
+      - name: intended_procedure
+        type: categorical
+    measures:
+      - name: procedure_admissions
+        agg: sum
+        expr: admissions
+      - name: procedure_admissions_with_wait
+        agg: sum
+        expr: admissions_with_wait
+      - name: procedure_wait_days_times_admissions
+        agg: sum
+        expr: wait_days_times_admissions
+      - name: procedure_admissions_with_over_year_share
+        agg: sum
+        expr: admissions_with_over_year_share
+      - name: procedure_over_year_admissions
+        agg: sum
+        expr: over_year_admissions
+      - name: procedure_published_wait_days
+        description: Published procedure wait. Valid at the procedure reporting-unit grain.
+        agg: min
+        expr: published_wait_days
+
+metrics:
+  - name: admissions
+    label: Admissions
+    description: Elective admissions in the hospital urgency fact.
+    type: simple
+    type_params:
+      measure: admissions
+  - name: admissions_with_wait
+    label: Admissions with a published wait
+    type: simple
+    type_params:
+      measure: admissions_with_wait
+  - name: wait_days_times_admissions
+    label: Wait days times admissions
+    type: simple
+    type_params:
+      measure: wait_days_times_admissions
+  - name: admissions_with_on_time_share
+    label: Admissions with an on-time share
+    type: simple
+    type_params:
+      measure: admissions_with_on_time_share
+  - name: on_time_admissions
+    label: Admissions within the recommended time
+    type: simple
+    type_params:
+      measure: on_time_admissions
+  - name: outside_recommended_admissions
+    label: Admissions outside the recommended time
+    description: Primary overdue risk proxy for hospital urgency.
+    type: simple
+    type_params:
+      measure: outside_recommended_admissions
+  - name: overdue_pressure
+    label: Overdue pressure
+    description: Secondary overdue risk proxy, zero when the published wait is still inside the limit.
+    type: simple
+    type_params:
+      measure: overdue_pressure
+  - name: listings_past_recommended_wait
+    label: Listings past the recommended wait
+    type: simple
+    type_params:
+      measure: listings_past_recommended_wait
+  - name: published_wait_days
+    label: Published wait days
+    type: simple
+    type_params:
+      measure: published_wait_days
+  - name: share_on_time
+    label: Share treated within the recommended time
+    description: Admissions within the recommended time divided by admissions with a published share.
+    type: ratio
+    type_params:
+      numerator: on_time_admissions
+      denominator: admissions_with_on_time_share
+  - name: weighted_wait_days
+    label: Surgery-weighted average of published waits
+    description: >
+      Average of published waits weighted by admissions. This is not the
+      patient-level national figure.
+    type: ratio
+    type_params:
+      numerator: wait_days_times_admissions
+      denominator: admissions_with_wait
+  - name: share_outside_recommended
+    label: Share outside the recommended time
+    type: derived
+    type_params:
+      expr: 1 - share_on_time
+      metrics:
+        - name: share_on_time
+
+  - name: specialty_admissions
+    label: Specialty admissions
+    type: simple
+    type_params:
+      measure: specialty_admissions
+  - name: specialty_admissions_with_wait
+    label: Specialty admissions with a published wait
+    type: simple
+    type_params:
+      measure: specialty_admissions_with_wait
+  - name: specialty_wait_days_times_admissions
+    label: Specialty wait days times admissions
+    type: simple
+    type_params:
+      measure: specialty_wait_days_times_admissions
+  - name: specialty_admissions_with_over_year_share
+    label: Specialty admissions with an over-year share
+    type: simple
+    type_params:
+      measure: specialty_admissions_with_over_year_share
+  - name: specialty_over_year_admissions
+    label: Specialty admissions waiting more than a year
+    type: simple
+    type_params:
+      measure: specialty_over_year_admissions
+  - name: specialty_published_wait_days
+    label: Published specialty wait
+    type: simple
+    type_params:
+      measure: specialty_published_wait_days
+  - name: share_waited_over_year
+    label: Share waiting more than a year
+    description: Surgery-weighted share of specialty admissions waiting more than 365 days.
+    type: ratio
+    type_params:
+      numerator: specialty_over_year_admissions
+      denominator: specialty_admissions_with_over_year_share
+  - name: specialty_weighted_wait_days
+    label: Surgery-weighted average of specialty waits
+    description: Not the patient-level national wait.
+    type: ratio
+    type_params:
+      numerator: specialty_wait_days_times_admissions
+      denominator: specialty_admissions_with_wait
+
+  - name: procedure_admissions
+    label: Procedure admissions
+    type: simple
+    type_params:
+      measure: procedure_admissions
+  - name: procedure_admissions_with_wait
+    label: Procedure admissions with a published wait
+    type: simple
+    type_params:
+      measure: procedure_admissions_with_wait
+  - name: procedure_wait_days_times_admissions
+    label: Procedure wait days times admissions
+    type: simple
+    type_params:
+      measure: procedure_wait_days_times_admissions
+  - name: procedure_admissions_with_over_year_share
+    label: Procedure admissions with an over-year share
+    type: simple
+    type_params:
+      measure: procedure_admissions_with_over_year_share
+  - name: procedure_over_year_admissions
+    label: Procedure admissions waiting more than a year
+    type: simple
+    type_params:
+      measure: procedure_over_year_admissions
+  - name: procedure_published_wait_days
+    label: Published procedure wait
+    type: simple
+    type_params:
+      measure: procedure_published_wait_days
+  - name: procedure_share_waited_over_year
+    label: Procedure share waiting more than a year
+    type: ratio
+    type_params:
+      numerator: procedure_over_year_admissions
+      denominator: procedure_admissions_with_over_year_share
+  - name: procedure_weighted_wait_days
+    label: Surgery-weighted average of procedure waits
+    type: ratio
+    type_params:
+      numerator: procedure_wait_days_times_admissions
+      denominator: procedure_admissions_with_wait
+
+saved_queries:
+  - name: hospital_urgency_national
+    description: National hospital rollup by urgency and year. Powers the urgency charts.
+    query_params:
+      metrics:
+        - admissions
+        - share_on_time
+        - outside_recommended_admissions
+        - weighted_wait_days
+        - listings_past_recommended_wait
+      group_by:
+        - Dimension('wait_record__financial_year')
+        - Dimension('wait_record__urgency_label')
+  - name: hospital_urgency_state
+    description: State by urgency and year, from public hospitals.
+    query_params:
+      metrics:
+        - admissions
+        - share_on_time
+        - outside_recommended_admissions
+      group_by:
+        - Dimension('wait_record__financial_year')
+        - Dimension('wait_record__state_code')
+        - Dimension('wait_record__state_name')
+        - Dimension('wait_record__urgency_label')
+  - name: hospital_state
+    description: State rollup across urgencies.
+    query_params:
+      metrics:
+        - admissions
+        - share_on_time
+        - outside_recommended_admissions
+      group_by:
+        - Dimension('wait_record__financial_year')
+        - Dimension('wait_record__state_code')
+        - Dimension('wait_record__state_name')
+  - name: hospital_peer
+    description: Peer group rollup.
+    query_params:
+      metrics:
+        - admissions
+        - share_on_time
+        - weighted_wait_days
+      group_by:
+        - Dimension('wait_record__financial_year')
+        - Dimension('wait_record__peer_group')
+  - name: hospital_listing
+    description: One row per hospital, urgency, and year. Published wait is meaningful at this grain.
+    query_params:
+      metrics:
+        - admissions
+        - share_on_time
+        - outside_recommended_admissions
+        - published_wait_days
+        - listings_past_recommended_wait
+        - overdue_pressure
+      group_by:
+        - Dimension('wait_record__financial_year')
+        - Dimension('wait_record__hospital_name')
+        - Dimension('wait_record__state_code')
+        - Dimension('wait_record__peer_group')
+        - Dimension('wait_record__urgency_label')
+  - name: specialty_national
+    description: National and pooled-level specialty totals by year. Use the National rows.
+    query_params:
+      metrics:
+        - specialty_admissions
+        - share_waited_over_year
+        - specialty_weighted_wait_days
+      group_by:
+        - Dimension('specialty_record__financial_year')
+        - Dimension('specialty_record__reporting_level')
+  - name: specialty_state
+    description: Official state specialty totals by year.
+    query_params:
+      metrics:
+        - specialty_admissions
+        - share_waited_over_year
+        - specialty_weighted_wait_days
+      group_by:
+        - Dimension('specialty_record__financial_year')
+        - Dimension('specialty_record__reporting_level')
+        - Dimension('specialty_record__state_code')
+        - Dimension('specialty_record__state_name')
+  - name: specialty_breakdown
+    description: National specialty rows. Published wait is meaningful here.
+    query_params:
+      metrics:
+        - specialty_admissions
+        - share_waited_over_year
+        - specialty_published_wait_days
+      group_by:
+        - Dimension('specialty_record__financial_year')
+        - Dimension('specialty_record__reporting_level')
+        - Dimension('specialty_record__state_code')
+        - Dimension('specialty_record__surgical_specialty')
+  - name: procedure_breakdown
+    description: Procedure rows. Do not sum procedures into a national total.
+    query_params:
+      metrics:
+        - procedure_admissions
+        - procedure_share_waited_over_year
+        - procedure_published_wait_days
+      group_by:
+        - Dimension('procedure_record__financial_year')
+        - Dimension('procedure_record__reporting_level')
+        - Dimension('procedure_record__state_code')
+        - Dimension('procedure_record__intended_procedure')
